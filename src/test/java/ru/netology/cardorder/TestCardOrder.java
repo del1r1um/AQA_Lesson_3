@@ -75,4 +75,12 @@ public class TestCardOrder {
         $("[class='button__text']").click();
         $("[data-test-id='phone'] .input__sub").shouldHave(text("Поле обязательно для заполнения"));
     }
+
+    @Test
+    void shouldSendFormWithNotCheckedAgreement() {
+        $("[data-test-id='name'] .input__control").setValue("Сергей Иванов-Петров");
+        $("[data-test-id='phone'] .input__control").setValue("+79031112233");
+        $("[class='button__text']").click();
+        $("[data-test-id='agreement'].input_invalid").shouldHave(text("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
+    }
 }
